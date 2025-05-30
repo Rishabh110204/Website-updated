@@ -53,7 +53,7 @@ export default function ServicesFooter() {
         </button>
 
         <a
-          href="/resume.pdf"
+          href="/Final CV.docx"
           download
           className="border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors flex items-center justify-center gap-2"
         >
