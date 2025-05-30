@@ -32,12 +32,14 @@ const Portfolio = () => {
           <div className="space-y-8 animate-fade-in">
             <div className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8">
               <div className="flex flex-col lg:flex-row items-center gap-8">
-                <div className="w-48 h-48 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-6xl font-bold shadow-2xl">
-                   <img
-                      src="/profile.jpg" // Replace this path with your actual image path
+                <div className="w-48 h-48 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 p-1 shadow-2xl">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-800">
+                     <img
+                      src="/profile.jpg" // ✅ Path to image in /public folder
                       alt="Ritesh Mahor"
                       className="w-full h-full object-cover"
                     />
+                  </div>
                 </div>
                 <div className="flex-1 text-center lg:text-left">
                   <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
