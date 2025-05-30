@@ -76,8 +76,7 @@ const Portfolio = () => {
                   Transformer design professional with over two decades of experience leading engineering teams, implementing lean strategies, and delivering cost-optimized high-performance transformer solutions. Specialized in oil-filled, cast resin, VPI transformers, and solutions for solar and multipulse drive applications.
                 </p>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
-                  Proven track record in training and developing teams, implementing ISO and Lean Six Sigma methodologies, and driving product development and business strategies across domestic and international firms.
-                </p>
+                  Proven track record in training and developing teams, implementing ISO and Lean Six Sigma methodologies, designing oil-filled transformers from <strong>100 kVA / 11kV</strong> up to <strong>500 MVA / 400kV</strong>, and cast resin & VPI transformers up to <strong>10 MVA / 33kV</strong>, while driving product development and business strategies across domestic and international firms.                </p>
               </div>
 
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
@@ -436,7 +435,7 @@ case 'achievements':
             title: "SOP – Phase Shifting, Multi-Winding",
             impact: "Reduced design errors",
             company: "Federal Power Transformer LLC, UAE"
-          }
+          },
         ].map((item, index) => (
           <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
             <div className="flex items-start gap-4">
