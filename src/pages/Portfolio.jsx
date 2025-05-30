@@ -772,7 +772,7 @@ case 'resume':
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {["Lean Six Sigma Black Belt", "Lean Six Sigma Green Belt", "Lead Auditor ISO 9001:2015", "Lean Management", "Gold Medalist – Electrical Engineering"].map((cert, index) => (
+              {["Lean Six Sigma Black Belt", "Lean Six Sigma Green Belt", "Lead Auditor ISO 9001:2015", "Lean Management"].map((cert, index) => (
                 <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
                   <div className="flex items-start gap-4">
                     <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-3 rounded-full">
