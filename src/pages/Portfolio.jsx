@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ServicesFooter from '../components/ServicesFooter';
 import { useNavigate } from 'react-router-dom';
 import {
-  User, FileText, Award, Briefcase, Mail, Phone, MapPin, ExternalLink, Download, Zap, Settings, BookOpen, Trophy, Star, Medal
+  User, FileText, Award, Briefcase, Mail, Phone, MapPin, ExternalLink, Download, Zap, Settings, BookOpen, Trophy, Star, Medal, linkedin
 } from 'lucide-react';
 
 const Portfolio = () => {
@@ -505,9 +505,11 @@ case 'achievements':
         <header className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold">
+              <button 
+                onClick={handleRedirect}
+                className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold">
                 <Zap size={32} />
-              </div>
+              </button>
               <div>
                 <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
                   Ritesh Mahor
@@ -516,11 +518,10 @@ case 'achievements':
               </div>
             </div>
             <button
-              onClick={handleRedirect}
+              onClick={() => window.location.href = 'https://www.linkedin.com/in/rpmahor/'}
               className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-indigo-700 transition-all hover:shadow-lg flex items-center gap-2"
             >
-              <ExternalLink size={18} />
-              Redirect
+              <linkedin size={32} />
             </button>
           </div>
         </header>
