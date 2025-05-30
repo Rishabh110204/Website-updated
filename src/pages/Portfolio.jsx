@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ServicesFooter from '../components/ServicesFooter';
 import { useNavigate } from 'react-router-dom';
 import {
-  User, FileText, Award, Briefcase, Mail, Phone, MapPin, ExternalLink, Download, Zap, Settings, BookOpen, Trophy, Star
+  User, FileText, Award, Briefcase, Mail, Phone, MapPin, ExternalLink, Download, Zap, Settings, BookOpen, Trophy, Star, Medal
 } from 'lucide-react';
 
 const Portfolio = () => {
@@ -14,7 +14,7 @@ const Portfolio = () => {
     { id: 'resume', label: 'Resume', icon: FileText },
     { id: 'certifications', label: 'Certifications', icon: Award },
     { id: 'business', label: 'Business', icon: Briefcase },
-    { id: 'achievements', label: 'Achievements', icon: Award },
+    { id: 'achievements', label: 'Achievements', icon: Medal },
     { id: 'services', label: 'Services', icon: Briefcase }
   
   ];
