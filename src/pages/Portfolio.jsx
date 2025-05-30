@@ -566,7 +566,7 @@ const Portfolio = () => {
               <div className="flex flex-col lg:flex-row items-center gap-8">
                 <div className="w-48 h-48 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-6xl font-bold shadow-2xl">
                    <img
-                      src="/profile.jpg" // Replace this path with your actual image path
+                      src="/public/profile.jpg" // Replace this path with your actual image path
                       alt="Ritesh Mahor"
                       className="w-full h-full object-cover"
                     />
