@@ -1,70 +1,179 @@
-# Getting Started with Create React App
+# 🏭 Transformer Database Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A professional web application for managing transformer specifications, pricing, and costing data with real-time Google Sheets integration.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- **📊 Real-time Data Management** - Edit Google Sheets data directly from the web interface
+- **💰 Pricing Management** - Professional pricing sheet with search and filtering
+- **📈 Costing Analysis** - Comprehensive costing data management
+- **🔐 Secure Authentication** - Firebase-based user authentication
+- **📱 Responsive Design** - Works perfectly on desktop and mobile devices
+- **⚡ Real-time Updates** - Instant synchronization with Google Sheets
 
-### `npm start`
+## 🚀 Quick Start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (v14 or higher)
+- npm or yarn
+- Google Cloud Project with Sheets API enabled
+- Firebase project (for authentication)
 
-### `npm test`
+### Local Development
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repo-url>
+   cd website
+   ```
 
-### `npm run build`
+2. **Install frontend dependencies:**
+   ```bash
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Install backend dependencies:**
+   ```bash
+   cd trafo-backend
+   npm install
+   cd ..
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Set up environment variables:**
+   - Copy `env.example` to `.env.local`
+   - Copy `trafo-backend/env.example` to `trafo-backend/.env`
+   - Fill in your configuration values
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. **Start the backend:**
+   ```bash
+   npm run backend:start
+   ```
 
-### `npm run eject`
+6. **Start the frontend (in a new terminal):**
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+7. **Open your browser:**
+   - Frontend: [http://localhost:3000](http://localhost:3000)
+   - Backend API: [http://localhost:5000](http://localhost:5000)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠️ Available Scripts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Frontend Scripts
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm test` - Run tests
+- `npm run deploy:check` - Check deployment readiness
+- `npm run deploy:build` - Build for deployment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Backend Scripts
+- `npm run backend:install` - Install backend dependencies
+- `npm run backend:start` - Start backend server
+- `npm run backend:test` - Test backend health
 
-## Learn More
+## 🌐 Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This application is designed to be deployed on:
+- **Frontend:** Vercel (React app)
+- **Backend:** Railway (Node.js API)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Quick Deployment
 
-### Code Splitting
+1. **Check deployment readiness:**
+   ```bash
+   npm run deploy:check
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. **Follow the deployment guide:**
+   - See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions
+   - Deploy backend to Railway first
+   - Deploy frontend to Vercel
+   - Connect them with environment variables
 
-### Analyzing the Bundle Size
+### Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Frontend (Vercel)
+```
+REACT_APP_BACKEND_URL=https://your-railway-app.railway.app
+```
 
-### Making a Progressive Web App
+#### Backend (Railway)
+```
+GOOGLE_SHEET_ID=your_google_sheet_id
+GOOGLE_SERVICE_ACCOUNT=your_service_account_json
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📁 Project Structure
 
-### Advanced Configuration
+```
+website/
+├── src/                    # Frontend React code
+│   ├── components/         # React components
+│   │   └── TabContent/     # Main application tabs
+│   ├── pages/             # Page components
+│   ├── firebase/          # Firebase configuration
+│   └── utils/             # Utility functions
+├── trafo-backend/         # Backend Node.js API
+│   ├── index.js           # Main server file
+│   └── package.json       # Backend dependencies
+├── public/                # Static assets
+├── vercel.json           # Vercel configuration
+├── deploy.sh             # Deployment script
+└── DEPLOYMENT.md         # Deployment guide
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔧 Configuration
 
-### Deployment
+### Google Sheets Setup
+1. Create a Google Cloud Project
+2. Enable Google Sheets API
+3. Create a service account
+4. Share your Google Sheet with the service account email
+5. Add the sheet ID to your environment variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Firebase Setup
+1. Create a Firebase project
+2. Enable Authentication
+3. Add your Firebase config to environment variables
 
-### `npm run build` fails to minify
+## 🐛 Troubleshooting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Common Issues
+
+1. **CORS Errors**
+   - Ensure backend CORS is properly configured
+   - Check that frontend URL is allowed
+
+2. **Google Sheets API Errors**
+   - Verify service account has sheet access
+   - Check sheet ID is correct
+   - Ensure API is enabled
+
+3. **Build Errors**
+   - Clear node_modules and reinstall
+   - Check for missing dependencies
+   - Verify environment variables
+
+### Getting Help
+
+- Check the [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) file
+- Review deployment logs in Vercel/Railway dashboards
+- Test API endpoints directly with tools like Postman
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+---
+
+**Built with ❤️ using React, Node.js, and Google Sheets API**

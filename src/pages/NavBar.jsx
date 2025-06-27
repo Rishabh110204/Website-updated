@@ -19,6 +19,11 @@ import {
   X
 } from 'lucide-react';
 import TransformerSpecifications from '../components/TabContent/TransformerSpecifications';
+import BisDB from '../components/TabContent/BisDB';
+import CostingAndPricing from '../components/TabContent/CostingAndPricing';
+import Pricing from '../components/TabContent/Pricing';
+import Converter from '../components/TabContent/Converter';
+import PadM from '../components/TabContent/PadM';
 
 export default function TransformerDashboard() {
   const [activeTab, setActiveTab] = useState('database');
@@ -30,19 +35,19 @@ export default function TransformerDashboard() {
       name: 'Database',
       icon: Database,
       subPages: [
-        { id: 'transformer-specs', name: 'Transformer Specifications', icon: FileText },
-        { id: 'material-data', name: 'Material Database', icon: Layers },
-        { id: 'standards', name: 'Standards & Codes', icon: BarChart3 },
-        { id: 'test-results', name: 'Test Results', icon: Settings },
+        { id: 'transformer-specs', name: 'Renewable', icon: FileText },
+        { id: 'material-data', name: 'Standard Trafo', icon: FileText },
+        { id: 'standards', name: 'Converter', icon: FileText },
+        { id: 'test-results', name: 'Pad Mount', icon: FileText },
       ]
     },
     pricelist: {
       name: 'Price List',
       icon: DollarSign,
       subPages: [
-        { id: 'material-costs', name: 'Material Costs', icon: Calculator },
-        { id: 'labor-rates', name: 'Labor Rates', icon: User },
-        { id: 'vendor-quotes', name: 'Vendor Quotes', icon: FileText },
+        { id: 'Transformer Costing', name: 'Transformer Costing', icon: Calculator },
+        { id: 'Transformer Pricing', name: 'Transformer Pricing', icon: Calculator },
+        { id: 'vendor-quotes', name: 'Vendor Quotes', icon: Calculator },
         { id: 'cost-analysis', name: 'Cost Analysis', icon: BarChart3 },
       ]
     },
@@ -74,6 +79,41 @@ export default function TransformerDashboard() {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
       <TransformerSpecifications />
+    </div>
+  );
+}
+   if (activeSubPage === 'material-data') {
+  return (
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+      <BisDB />
+    </div>
+  );
+}
+if (activeSubPage === 'Transformer Pricing') {
+  return (
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+      <Pricing />
+    </div>
+  );
+}
+   if (activeSubPage === 'Transformer Costing') {
+  return (
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+      <CostingAndPricing />
+    </div>
+  );
+}
+if (activeSubPage === 'standards') {
+  return (
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+      <Converter />
+    </div>
+  );
+}
+if (activeSubPage === 'test-results') {
+  return (
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+      <PadM />
     </div>
   );
 }

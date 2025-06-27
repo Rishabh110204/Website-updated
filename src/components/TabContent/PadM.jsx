@@ -18,7 +18,7 @@ export default function TransformerSpecifications() {
     // Replace these with your actual values
     spreadsheetId: '1iwopEGmW6wjbHQ4I_blVvlQWYaSfxhk-CfiK3PMCrDI', // Get this from the Google Sheets URL
     apiKey: 'AIzaSyDPWhQCxMem_5WI6Bnw2l6HglVVRnhrcv4', // Get this from Google Cloud Console
-    range: 'Renewable!A:Z', // Adjust the range as needed
+    range: 'PadM!A:Z', // Adjust the range as needed
   };
 
   // Function to fetch data from Google Sheets

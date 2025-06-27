@@ -21,3 +21,23 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# Backend
+trafo-backend/node_modules/
+trafo-backend/.env
+trafo-backend/service-account.json
+
+# Vercel
+.vercel
+
+# Railway
+.railway
+
+# Environment variables
+.env
+.env.*
+!.env.example
