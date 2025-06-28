@@ -35,7 +35,7 @@ const Portfolio = () => {
                 <div className="w-48 h-48 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 p-1 shadow-2xl">
                   <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-800">
                      <img
-                      src="/profile.jpg" // ✅ Path to image in /public folder
+                      src="https://drive.google.com/file/d/14pJSdiTouwV2pA1bwW6yQKu3LCRPC_kI/view?usp=sharing"
                       alt="Ritesh Mahor"
                       className="w-full h-full object-cover"
                     />
