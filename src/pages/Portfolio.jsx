@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import ServicesFooter from '../components/ServicesFooter';
 import { useNavigate } from 'react-router-dom';
@@ -35,7 +34,7 @@ const Portfolio = () => {
                 <div className="w-48 h-48 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 p-1 shadow-2xl">
                   <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-800">
                      <img
-                      src="/profile.jpg" // ✅ Path to image in /public folder
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
                       alt="Ritesh Mahor"
                       className="w-full h-full object-cover"
                     />
@@ -398,7 +397,7 @@ case 'achievements':
           },
           {
             title: "125 MVA, 330kV Transformer Manufacturing",
-            impact: "Expanded company’s product range",
+            impact: "Expanded company's product range",
             company: "ATEF Large Power Transformer LLC"
           },
           {
