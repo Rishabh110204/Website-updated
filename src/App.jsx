@@ -4,6 +4,7 @@ import Portfolio from "./pages/Portfolio";
 import Login from "./pages/Login";
 import NavBar from "./pages/NavBar";
 import { AuthProvider, useAuth } from "./firebase/AuthContext";
+import DebugInfo from "./components/DebugInfo";
 
 const PrivateRoute = ({ children }) => {
   const { currentUser } = useAuth();
@@ -14,6 +15,7 @@ export default function App() {
   return (
     <AuthProvider>
       <Router>
+        <DebugInfo />
         <Routes>
           <Route path="/" element={<Portfolio />} />
           <Route path="/login" element={<Login />} />
