@@ -19,7 +19,5 @@
       "dest": "/index.html"
     }
   ],
-  "env": {
-    "REACT_APP_BACKEND_URL": "@backend-url"
-  }
+  
 } 
