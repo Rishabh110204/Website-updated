@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Eye, EyeOff, Zap, Mail, Lock, ArrowRight, Shield } from 'lucide-react';
+import { Eye, EyeOff, Zap, Mail, Lock, ArrowRight } from 'lucide-react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/firebase'; // Adjust path if needed
 import { useNavigate } from 'react-router-dom';
@@ -133,12 +133,12 @@ const LoginPage = () => {
                   Remember me
                 </span>
               </label>
-              <a
-                href="#"
+              <button
+                type="button"
                 className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-500 font-medium"
               >
                 Forgot password?
-              </a>
+              </button>
             </div>
 
             {/* Login Button */}

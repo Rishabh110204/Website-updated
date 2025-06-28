@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { GOOGLE_SHEETS_CONFIG } from '../../config/googleSheets';
 
 export default function TransformerSpecifications() {
   const [data, setData] = useState([]);
@@ -13,43 +14,28 @@ export default function TransformerSpecifications() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Configuration for Google Sheets API
-  const GOOGLE_SHEETS_CONFIG = {
-    // Replace these with your actual values
-    spreadsheetId: '1iwopEGmW6wjbHQ4I_blVvlQWYaSfxhk-CfiK3PMCrDI', // Get this from the Google Sheets URL
-    apiKey: 'AIzaSyDPWhQCxMem_5WI6Bnw2l6HglVVRnhrcv4', // Get this from Google Cloud Console
-    range: 'PadM!A:Z', // Adjust the range as needed
-  };
-
-  // Function to fetch data from Google Sheets
-  const fetchGoogleSheetsData = async () => {
+  const fetchGoogleSheetsData = useCallback(async () => {
     try {
-      const { spreadsheetId, apiKey, range } = GOOGLE_SHEETS_CONFIG;
-      
-      if (!spreadsheetId || !apiKey || spreadsheetId === 'YOUR_SPREADSHEET_ID' || apiKey === 'YOUR_API_KEY') {
-        throw new Error('Please configure your Google Sheets API credentials');
-      }
-
-      const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
-      
-      const response = await fetch(url);
+      const response = await fetch(
+        `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_CONFIG.spreadsheetId}/values/Sheet1?key=${GOOGLE_SHEETS_CONFIG.apiKey}`
+      );
       
       if (!response.ok) {
-        throw new Error(`Google Sheets API error: ${response.status} ${response.statusText}`);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
       
       const result = await response.json();
       
       if (!result.values || result.values.length === 0) {
-        throw new Error('No data found in the specified range');
+        throw new Error('No data found in the spreadsheet');
       }
       
       return result;
     } catch (err) {
-      console.error('Error fetching Google Sheets data:', err);
+      console.error('Error fetching data:', err);
       throw err;
     }
-  };
+  }, []);
 
   useEffect(() => {
     const loadData = async () => {
@@ -116,7 +102,7 @@ export default function TransformerSpecifications() {
     };
 
     loadData();
-  }, [itemsPerPage]);
+  }, [itemsPerPage, fetchGoogleSheetsData]);
 
   const handleFilterChange = (header, value) => {
     const newFilters = { ...filters, [header]: value };

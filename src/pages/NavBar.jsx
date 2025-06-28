@@ -3,18 +3,15 @@ import {
   Database, 
   DollarSign, 
   Zap, 
-  Settings, 
   User, 
   Bell, 
   Search,
   ChevronDown,
   FileText,
   BarChart3,
-  Layers,
   Calculator,
   Wrench,
   Palette,
-  LogOut,
   Menu,
   X
 } from 'lucide-react';

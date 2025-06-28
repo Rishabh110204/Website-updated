@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ServicesFooter from '../components/ServicesFooter';
 import { useNavigate } from 'react-router-dom';
 import {
-  User, FileText, Award, Briefcase, Mail, Phone, MapPin, ExternalLink, Download, Zap, Settings, BookOpen, Trophy, Star, Medal, Linkedin
+  User, FileText, Award, Briefcase, Mail, Phone, MapPin, Zap, Settings, BookOpen, Trophy, Star, Medal, Linkedin
 } from 'lucide-react';
 
 const Portfolio = () => {

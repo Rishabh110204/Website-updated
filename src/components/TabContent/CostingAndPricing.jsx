@@ -13,11 +13,6 @@ export default function CostingPage() {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Load data on component mount
-  useEffect(() => {
-    fetchSheetData();
-  }, []);
-
   const fetchSheetData = useCallback(async () => {
     setIsLoading(true);
     setError(null);
@@ -43,6 +38,11 @@ export default function CostingPage() {
       setIsLoading(false);
     }
   }, []);
+
+  // Load data on component mount
+  useEffect(() => {
+    fetchSheetData();
+  }, [fetchSheetData]);
 
   const handleCellClick = (rowIndex, cellIndex, currentValue) => {
     setIsEditing(true);

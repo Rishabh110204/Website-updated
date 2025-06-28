@@ -2,11 +2,10 @@
 // Replace these values with your actual Google API credentials
 
 export const GOOGLE_SHEETS_CONFIG = {
-  // Your Google API Key (from Google Cloud Console)
-  API_KEY: 'AIzaSyDPWhQCxMem_5WI6Bnw2l6HglVVRnhrcv4',
-  
-  // Your Google Sheet ID (from the URL of your sheet)
-  SHEET_ID: '1iwopEGmW6wjbHQ4I_blVvlQWYaSfxhk-CfiK3PMCrDI',
+  // Replace these with your actual values
+  spreadsheetId: '1iwopEGmW6wjbHQ4I_blVvlQWYaSfxhk-CfiK3PMCrDI', // Get this from the Google Sheets URL
+  apiKey: 'AIzaSyDPWhQCxMem_5WI6Bnw2l6HglVVRnhrcv4', // Get this from Google Cloud Console
+  range: 'Sheet1!A:Z', // Adjust the range as needed
   
   // Your OAuth 2.0 Client ID (from Google Cloud Console)
   CLIENT_ID: '128638155579-gknrt55e4bi7sqtpisinsekn1ti8djbs.apps.googleusercontent.com',
