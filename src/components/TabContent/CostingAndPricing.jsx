@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
 // Backend API configuration
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 export default function CostingPage() {
   const [costingData, setCostingData] = useState([]);
