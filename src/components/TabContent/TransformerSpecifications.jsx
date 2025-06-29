@@ -23,7 +23,7 @@ export default function TransformerSpecifications() {
       }
 
       const response = await fetch(
-        `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_CONFIG.spreadsheetId}/values/Sheet1?key=${GOOGLE_SHEETS_CONFIG.apiKey}`
+        `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_CONFIG.spreadsheetId}/values/Renewable?key=${GOOGLE_SHEETS_CONFIG.apiKey}`
       );
       
       if (!response.ok) {
