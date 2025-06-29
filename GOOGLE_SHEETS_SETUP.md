@@ -1,6 +1,82 @@
 # Google Sheets API Setup Guide
 
-This guide will help you set up the Google Sheets API integration for your React application.
+## Current Issue
+The Google Sheets API is returning a 400 error, which means there's an issue with the API key, spreadsheet permissions, or configuration.
+
+## Quick Fix Steps
+
+### 1. Check Google Sheets Permissions
+Make sure your Google Sheet is set to "Anyone with the link can view":
+1. Open your Google Sheet: `1iwopEGmW6wjbHQ4I_blVvlQWYaSfxhk-CfiK3PMCrDI`
+2. Click "Share" in the top right
+3. Change from "Restricted" to "Anyone with the link"
+4. Set permission to "Viewer"
+5. Click "Done"
+
+### 2. Verify API Key
+The current API key might be invalid or restricted. To get a new one:
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select existing one
+3. Enable Google Sheets API:
+   - Go to "APIs & Services" > "Library"
+   - Search for "Google Sheets API"
+   - Click "Enable"
+
+4. Create API Key:
+   - Go to "APIs & Services" > "Credentials"
+   - Click "Create Credentials" > "API Key"
+   - Copy the new API key
+
+5. Restrict the API Key (Recommended):
+   - Click on the created API key
+   - Under "Application restrictions" select "HTTP referrers"
+   - Add your domain: `https://your-vercel-app.vercel.app/*`
+   - Under "API restrictions" select "Restrict key"
+   - Select "Google Sheets API"
+   - Click "Save"
+
+### 3. Set Environment Variables
+
+#### For Local Development:
+Create a `.env` file in your project root:
+```env
+REACT_APP_GOOGLE_SHEETS_ID=1iwopEGmW6wjbHQ4I_blVvlQWYaSfxhk-CfiK3PMCrDI
+REACT_APP_GOOGLE_API_KEY=your_new_api_key_here
+REACT_APP_GOOGLE_CLIENT_ID=your_client_id_here
+```
+
+#### For Vercel Deployment:
+1. Go to your Vercel dashboard
+2. Select your project
+3. Go to "Settings" > "Environment Variables"
+4. Add these variables:
+   - `REACT_APP_GOOGLE_SHEETS_ID`: `1iwopEGmW6wjbHQ4I_blVvlQWYaSfxhk-CfiK3PMCrDI`
+   - `REACT_APP_GOOGLE_API_KEY`: Your new API key
+   - `REACT_APP_GOOGLE_CLIENT_ID`: Your client ID
+5. Redeploy your application
+
+### 4. Test the API
+You can test the API directly in your browser:
+```
+https://sheets.googleapis.com/v4/spreadsheets/1iwopEGmW6wjbHQ4I_blVvlQWYaSfxhk-CfiK3PMCrDI/values/Sheet1?key=YOUR_NEW_API_KEY
+```
+
+If it returns JSON data, the API is working correctly.
+
+## Current Status
+- ✅ Debug popup removed
+- ✅ Error handling improved in all components
+- ✅ Fallback to demo data when API fails
+- ✅ Better error messages for debugging
+
+## Next Steps
+1. Follow the setup guide above
+2. Set the environment variables
+3. Redeploy to Vercel
+4. Test the application
+
+The application will now show demo data if the Google Sheets API fails, so users can still see the interface while you fix the API configuration.
 
 ## Prerequisites
 

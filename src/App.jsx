@@ -1,34 +1,24 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from "./pages/NavBar";
 import Portfolio from "./pages/Portfolio";
 import Login from "./pages/Login";
-import NavBar from "./pages/NavBar";
-import { AuthProvider, useAuth } from "./firebase/AuthContext";
-import DebugInfo from "./components/DebugInfo";
+import { AuthProvider } from "./firebase/AuthContext";
 
-const PrivateRoute = ({ children }) => {
-  const { currentUser } = useAuth();
-  return currentUser ? children : <Navigate to="/login" />;
-};
-
-export default function App() {
+function App() {
   return (
     <AuthProvider>
       <Router>
-        <DebugInfo />
-        <Routes>
-          <Route path="/" element={<Portfolio />} />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/dashboard/*"
-            element={
-              <PrivateRoute>
-                <NavBar />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<NavBar />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </div>
       </Router>
     </AuthProvider>
   );
 }
+
+export default App;

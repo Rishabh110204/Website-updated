@@ -16,12 +16,20 @@ export default function TransformerSpecifications() {
 
   const fetchGoogleSheetsData = useCallback(async () => {
     try {
+      // Check if API is properly configured
+      if (!GOOGLE_SHEETS_CONFIG.apiKey || GOOGLE_SHEETS_CONFIG.apiKey === 'YOUR_API_KEY' || 
+          !GOOGLE_SHEETS_CONFIG.spreadsheetId || GOOGLE_SHEETS_CONFIG.spreadsheetId === 'YOUR_SPREADSHEET_ID') {
+        throw new Error('Google Sheets API not properly configured');
+      }
+
       const response = await fetch(
         `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_CONFIG.spreadsheetId}/values/Sheet1?key=${GOOGLE_SHEETS_CONFIG.apiKey}`
       );
       
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error('Google Sheets API Error:', response.status, errorText);
+        throw new Error(`Google Sheets API error: ${response.status} - ${errorText}`);
       }
       
       const result = await response.json();
@@ -43,43 +51,17 @@ export default function TransformerSpecifications() {
       setError(null);
       
       try {
-        // Check if API is configured
-        if (GOOGLE_SHEETS_CONFIG.spreadsheetId === 'YOUR_SPREADSHEET_ID' || 
-            GOOGLE_SHEETS_CONFIG.apiKey === 'YOUR_API_KEY') {
-          // Use demo data if API is not configured
-          const mockData = {
-            values: [
-              ['Model', 'Type', 'Power (kW)', 'Voltage (V)', 'Efficiency (%)', 'Weight (kg)', 'Price ($)', 'Manufacturer'],
-              ['TRF-100', 'Step-up', '100', '220/440', '95.5', '150', '2500', 'TechCorp'],
-              ['TRF-200', 'Step-down', '200', '440/220', '96.2', '280', '4500', 'PowerTech'],
-              ['TRF-300', 'Isolation', '300', '220/220', '94.8', '320', '5500', 'ElectroMax'],
-              ['TRF-150', 'Step-up', '150', '380/760', '95.8', '200', '3200', 'TechCorp'],
-              ['TRF-250', 'Step-down', '250', '760/380', '96.5', '350', '5800', 'PowerTech'],
-              ['TRF-400', 'Auto', '400', '220/240', '97.1', '450', '7200', 'ElectroMax'],
-              ['TRF-500', 'Step-up', '500', '480/960', '96.8', '580', '9500', 'TechCorp'],
-              ['TRF-350', 'Isolation', '350', '440/440', '95.2', '420', '6800', 'PowerTech']
-            ]
-          };
-          
-          setError('Using demo data. Please configure Google Sheets API credentials.');
-          
-          const [headerRow, ...rows] = mockData.values;
-          setHeaders(headerRow);
-          setData(rows);
-          setFilteredData(rows);
-          setDisplayData(rows.slice(0, itemsPerPage));
-        } else {
-          // Fetch from Google Sheets
-          const result = await fetchGoogleSheetsData();
-          const [headerRow, ...rows] = result.values;
-          
-          setHeaders(headerRow);
-          setData(rows);
-          setFilteredData(rows);
-          setDisplayData(rows.slice(0, itemsPerPage));
-        }
+        // Try to fetch from Google Sheets
+        const result = await fetchGoogleSheetsData();
+        const [headerRow, ...rows] = result.values;
+        
+        setHeaders(headerRow);
+        setData(rows);
+        setFilteredData(rows);
+        setDisplayData(rows.slice(0, itemsPerPage));
       } catch (err) {
-        setError(err.message || 'Failed to load data');
+        console.error('Failed to load from Google Sheets, using demo data:', err);
+        setError('Unable to load data from Google Sheets. Showing demo data instead.');
         
         // Fallback to demo data on error
         const mockData = {
@@ -87,7 +69,12 @@ export default function TransformerSpecifications() {
             ['Model', 'Type', 'Power (kW)', 'Voltage (V)', 'Efficiency (%)', 'Weight (kg)', 'Price ($)', 'Manufacturer'],
             ['TRF-100', 'Step-up', '100', '220/440', '95.5', '150', '2500', 'TechCorp'],
             ['TRF-200', 'Step-down', '200', '440/220', '96.2', '280', '4500', 'PowerTech'],
-            ['TRF-300', 'Isolation', '300', '220/220', '94.8', '320', '5500', 'ElectroMax']
+            ['TRF-300', 'Isolation', '300', '220/220', '94.8', '320', '5500', 'ElectroMax'],
+            ['TRF-150', 'Step-up', '150', '380/760', '95.8', '200', '3200', 'TechCorp'],
+            ['TRF-250', 'Step-down', '250', '760/380', '96.5', '350', '5800', 'PowerTech'],
+            ['TRF-400', 'Auto', '400', '220/240', '97.1', '450', '7200', 'ElectroMax'],
+            ['TRF-500', 'Step-up', '500', '480/960', '96.8', '580', '9500', 'TechCorp'],
+            ['TRF-350', 'Isolation', '350', '440/440', '95.2', '420', '6800', 'PowerTech']
           ]
         };
         

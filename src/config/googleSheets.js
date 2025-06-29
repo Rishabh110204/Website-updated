@@ -2,13 +2,13 @@
 // Replace these values with your actual Google API credentials
 
 export const GOOGLE_SHEETS_CONFIG = {
-  // Replace these with your actual values
-  spreadsheetId: '1iwopEGmW6wjbHQ4I_blVvlQWYaSfxhk-CfiK3PMCrDI', // Get this from the Google Sheets URL
-  apiKey: 'AIzaSyDPWhQCxMem_5WI6Bnw2l6HglVVRnhrcv4', // Get this from Google Cloud Console
+  // Use environment variables for security
+  spreadsheetId: process.env.REACT_APP_GOOGLE_SHEETS_ID || '1iwopEGmW6wjbHQ4I_blVvlQWYaSfxhk-CfiK3PMCrDI',
+  apiKey: process.env.REACT_APP_GOOGLE_API_KEY || 'AIzaSyDPWhQCxMem_5WI6Bnw2l6HglVVRnhrcv4',
   range: 'Sheet1!A:Z', // Adjust the range as needed
   
   // Your OAuth 2.0 Client ID (from Google Cloud Console)
-  CLIENT_ID: '128638155579-gknrt55e4bi7sqtpisinsekn1ti8djbs.apps.googleusercontent.com',
+  CLIENT_ID: process.env.REACT_APP_GOOGLE_CLIENT_ID || '128638155579-gknrt55e4bi7sqtpisinsekn1ti8djbs.apps.googleusercontent.com',
   
   // Required scopes for Google Sheets API
   SCOPES: 'https://www.googleapis.com/auth/spreadsheets',
@@ -27,4 +27,5 @@ export const GOOGLE_SHEETS_CONFIG = {
 //      - Application type: Web application
 //      - Authorized JavaScript origins: Add your domain (e.g., http://localhost:3000)
 //      - Authorized redirect URIs: Add your domain (e.g., http://localhost:3000)
-// 5. Get your Sheet ID from the URL: https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit 
+// 5. Get your Sheet ID from the URL: https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit
+// 6. Make sure your Google Sheet is set to "Anyone with the link can view" 
