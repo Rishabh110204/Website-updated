@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "./pages/NavBar";
-import Portfolio from "./pages/Portfolio";
 import Login from "./pages/Login";
 import { AuthProvider, useAuth } from "./firebase/AuthContext";
 
@@ -19,8 +18,6 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-            <Route path="/" element={<Portfolio />} />
-            <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={
               <ProtectedRoute>
@@ -28,7 +25,7 @@ function App() {
               </ProtectedRoute>
             } />
             {/* Add more protected routes here as needed */}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
         </div>
       </Router>
